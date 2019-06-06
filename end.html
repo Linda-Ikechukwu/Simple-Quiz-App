@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Congrats</title>
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+<body>
+    <div id="end" class="flex-center flex-column">
+        <h2 id="score-smiley"></h2>
+        <p id="final-score">
+            You Scorced <span class="score"></span> out of <span class="no-of-questions"></span>
+        </p>
+        <form>
+            <input type="text" name="username" id="username" placeholder="What's Your Name">
+            <button id="high-score-save" class="btn" type="submit" onclick="saveHighScore(event)">
+                Save
+            </button>
+            <button class="btn" type="submit">Play Again?</button>
+            <button class="btn" type="submit"></button>
+        </form>
+    </div>
+    <script src="js/game.js"></script>   
+</body>
+</html>

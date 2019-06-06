@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Linda's Quiz Game</title>
+    
+    <link rel="stylesheet" href="styles/game.css">
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="game" class="justify-center flex-column">
+            <div id="hud">
+                <div id="hud-item">
+                    <p id="counter"class="hud-prefix"></p>
+                    <div id="progress-bar">
+                        <div id="progress-bar-full"></div>
+                    </div>
+                </div>
+                <div id="hud-item">
+                    <p class="hud-prefix">Score</p>
+                    <h2 class="hud-main-text" id="score">0</h2>
+                </div>
+
+            </div>
+
+            <h2 id="question">What is the answer?</h2>
+            <div class="choice-container">
+                <p class="choice-option">A</p>
+                <p class="choice-text" data-choiceNumber="1">Choice 1</p>
+            </div>
+            <div class="choice-container">
+                <p class="choice-option">B</p>
+                <p class="choice-text" data-choiceNumber="2">Choice 2</p>
+            </div>
+            <div class="choice-container">
+                <p class="choice-option">C</p>
+                <p class="choice-text" data-choiceNumber="3">Choice 3</p>
+            </div>
+            <div class="choice-container">
+                <p class="choice-option">D</p>
+                <p class="choice-text" data-choiceNumber="4">Choice 4</p>
+            </div>
+
+            <div id="hud">
+                <div id="item">
+                    <p class="hud-prefix">Time: <span class="timer-countdown"></span> seconds</p>
+                    <div id="time">
+                        <div id="timer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+:
+    </div>
+    <script src="js/game.js"></script>
+</body>
+
+</html>
