@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Congrats</title>
+    <title>Game Over`</title>
     <link rel="stylesheet" href="styles/index.css">
 </head>
+
 <body>
-    <div id="end" class="flex-center flex-column">
-        <h2 id="score-smiley"></h2>
-        <p id="final-score">
-            You Scorced <span class="score"></span> out of <span class="no-of-questions"></span>
-        </p>
-        <form>
-            <input type="text" name="username" id="username" placeholder="What's Your Name">
-            <button id="high-score-save" class="btn" type="submit" onclick="saveHighScore(event)">
-                Save
-            </button>
-            <button class="btn" type="submit">Play Again?</button>
-            <button class="btn" type="submit"></button>
-        </form>
-    </div>
-    <script src="js/game.js"></script>   
+    <div class="container">
+        <div id="end" class="flex-center flex-column">
+            <h2 id="score-smiley"></h2>
+            <h3 >
+                You Scored <span id="final-score"></span> over <span id="max-score"></span>
+            </h3>
+            <form>
+                <input type="text" name="username" id="username" placeholder="What's Your Name">
+                <button id="save-highscore-btn" class="btn" type="submit" onclick="saveHighScore(event)" disabled>
+                    Save
+                </button>
+                <a href="./game.html" class="btn">Play Again?</a>
+                <a href="./index.html" class="btn">Go home</a>
+            </form>
+        </div>
+    </div>    
+    <script src="js/end.js"></script>
 </body>
+
 </html>

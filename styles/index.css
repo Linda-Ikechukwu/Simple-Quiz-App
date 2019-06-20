@@ -1,6 +1,8 @@
 :root{
-    --default-color:#ddc0b4;
-    --text-color:rgb(95, 95, 95); 
+    --default-color:linear-gradient(70deg, #ddc0b4 0%, #ddb4a2 100%);
+    --text-color: white; 
+    --secondary-color:#bd8270;
+    --border-color:#aa6f5d;
     font-size: 62.5%;
 }
 *{
@@ -32,7 +34,7 @@ h3{
 
 /*UTILITIES*/
 body{ 
-    background-color: var(--default-color);
+    background-image: var(--default-color);
 }
 .container{
     width:100vw;
@@ -69,20 +71,20 @@ body{
 .buttons{
     flex-direction: row;
 }
+.buttons .btn{
+    margin-right: 1rem;
+}
 .btn{
     font-size:2rem;
     padding: 1rem 2rem;
     width:20rem;
     text-align:center;
-    border: 0.2rem solid #aa6f5d;
+    border: 0.2rem solid var(--border-color);
     margin-bottom: 1rem;
-    margin-right: 1rem;
     text-decoration: none;
     color:whitesmoke;
-    background-color:#bd8270;
+    background-color:var(--secondary-color);
     border-radius: 1rem; 
-    
-    
 }
 .btn:hover{
     cursor:pointer;
@@ -96,4 +98,41 @@ body{
     cursor:not-allowed;
     box-shadow: none;
     transform:none;
+    background-color:var(--secondary-color);
+}
+form{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+}
+input{
+    margin-bottom: 1rem;
+    width: 20rem;
+    color: rgb(15, 15, 15);
+    padding: 1.5rem;
+    font-size:1.8rem;
+    border:none;
+    border-radius: 1rem; 
+    box-shadow: 0 0.4rem 1.4rem 0 whitesmoke; 
+
+}
+input:focus{
+    outline:0.2rem solid var(--border-color);
+}
+ul{
+    list-style-type:none;
+    padding-left:0;
+    margin-bottom: 4rem;
+
+
+}
+li{
+    font-size:2.5rem;
+    margin-bottom:0.5rem;
+    text-align:center;
+}
+li:hover{
+    transform:scale(1.025);
 }

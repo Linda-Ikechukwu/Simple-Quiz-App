@@ -4,7 +4,8 @@ const questionCounterText = document.getElementById('counter');
 const scoreText = document.getElementById('score');
 const progressBarFull = document.getElementById('progress-bar-full');
 const timer = document.getElementById('timer');
-const timerCountdown = document.querySelector('.timer-countdown')
+const loader = document.getElementById('.loader');
+const timerCountdown = document.querySelector('.timer-countdown');
 
 let availableQuestions = [];
 let currentQuestion = {}; 
@@ -31,7 +32,7 @@ let questions = [
         answer: 2
     },
     {
-        question : 'llll rereree',
+        question : 'llll rereree e',
         choice1: 'hello',
         choice2: 'what',
         choice3: 'yes',
@@ -39,7 +40,7 @@ let questions = [
         answer: 3
     },
     {
-        question : 'llll rereree',
+        question : 'llll rereree r',
         choice1: 'hello',
         choice2: 'what',
         choice3: 'yes',
@@ -58,15 +59,18 @@ startGame = () => {
     score = 0;
     availableQuestions = [...questions];
     getNewQuestion();
+    startCountdown();
     
 }
 
 getNewQuestion = () => {
     //Go to end game page if all questions have been rendered
     if(availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS){
+        localStorage.setItem('mostRecentScore',score);
+        localStorage.setItem('maxScore',MAX_QUESTIONS * BONUS);
        return window.location.assign("./end.html");
     }
-    //select random question from question array
+    //else select and render random question from question array
     questionCounter++;
     questionCounterText.innerText = `Question ${questionCounter}/${MAX_QUESTIONS}`
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
@@ -88,9 +92,11 @@ getNewQuestion = () => {
     
     //timer countdown
     timerCounter = 0;
+
    
 }
 
+//when a question choice is clicked,
 choices.forEach(choice => {
     choice.addEventListener('click', e => {
         if(!acceptingAnswers){
@@ -117,35 +123,36 @@ choices.forEach(choice => {
             clearInterval(startCountdown);
             setTimeout(() => {
                 correctAnswer.classList.add('correct');
-            },500);
+            },900);
             
         }
-        //Remove applied answer classes and load new question
+        //Remove applied answer classes after some time and load new question
         setTimeout (() => {
-            //Remove applied answer classes
             selectedChoice.parentElement.classList.remove(selectedAnswerClass);
             correctAnswer.classList.remove('correct');
             getNewQuestion();
-        },1500)
+        
+        },2000)
 
         
     })
 })
+
 const incrementScore = (num) =>{
     score += num;
     scoreText.innerText = score;
 }
 
+//Timer function
 const countdownTime = () =>{
   if(timerCounter <= QUESTION_TIME) {
       timerCountdown.innerText = timerCounter;
-      timer.style.width = `${timerCounter * 10}%`
+      timer.style.width = `${timerCounter * 10}%`;
       timerCounter++;
-   }else{
-       timerCounter = 0;
+    }else{
        getNewQuestion();
-   } 
+    } 
 }
-const startCountdown = setInterval(countdownTime,1000);
+const startCountdown = () => setInterval(countdownTime,1000);
 
 startGame();

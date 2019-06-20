@@ -23,6 +23,7 @@ html{
 .choice-text{
     padding: 1.5rem;
     width:100%;
+    color:rgb(20, 20, 20);
 }
 .correct{
     background-color:#28a745;
@@ -78,3 +79,43 @@ html{
     border-radius: 5rem;
 
 }
+/*Loader*/
+#loader{
+    height: 5rem;
+    width: 5rem;
+    transform-origin:bottom center;
+    animation: rotate 3s linear infinite;
+}
+.circle{
+    display: inline-block;
+    background-color: white;
+    height:4rem;
+    width:4rem;
+    border-radius:50%;
+    margin: -1rem;
+    transform: scale(0);
+    animation: grow 1.5s linear infinite;
+}
+.circle:nth-child(2){
+    background-color: var(--progress-color);
+    animation-delay:0.75s;
+}
+.circle:nth-child(3){
+    animation-delay:1.75s;
+    background-color: #dba58d;
+}
+
+@keyframes rotate{
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes grow{
+    50%{
+        transform: scale(1);
+    }
+}
+
+
+
