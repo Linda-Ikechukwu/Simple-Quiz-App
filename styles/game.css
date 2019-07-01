@@ -36,7 +36,7 @@ html{
 #hud{
     display:flex;
     justify-content: space-between;
-    margin-top:4rem;
+    margin-top:2rem;
     width:100%;
 }
 .hud-prefix{

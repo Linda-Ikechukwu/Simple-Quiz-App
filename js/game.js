@@ -14,45 +14,7 @@ let score = 0;
 let timerCounter = 0;
 
 
-let questions = [
-    {
-        question : 'llll rereree',
-        choice1: 'hello',
-        choice2: 'what',
-        choice3: 'yes',
-        choice4: 'for',
-        answer: 1
-    },
-    {
-        question : 'llll rereree pppppt',
-        choice1: 'hello',
-        choice2: 'hi',
-        choice3: 'what',
-        choice4: 'yes',
-        answer: 2
-    },
-    {
-        question : 'llll rereree e',
-        choice1: 'hello',
-        choice2: 'what',
-        choice3: 'yes',
-        choice4: 'for',
-        answer: 3
-    },
-    {
-        question : 'llll rereree r',
-        choice1: 'hello',
-        choice2: 'what',
-        choice3: 'yes',
-        choice4: 'for',
-        answer: 4
-    }
-]
-
-//GAME CONSTANTS
-const BONUS = 10;
-const QUESTION_TIME = 10
-const MAX_QUESTIONS = questions.length;
+let questions = [];
 
 startGame = () => {
     questionCounter = 0;
@@ -60,8 +22,32 @@ startGame = () => {
     availableQuestions = [...questions];
     getNewQuestion();
     startCountdown();
-    
 }
+
+const chosenCategory = localStorage.getItem('chosenCategory');
+
+fetch(`./questions/${chosenCategory}.json`)
+   .then( response => {
+       console.log(response);
+       console.log(chosenCategory);
+       return response.json();
+    })
+   .then(loadedQuestions => {
+       console.log(loadedQuestions);
+       questions = loadedQuestions;
+       console.log(questions);
+       startGame();
+   })
+   .catch(err => {
+       console.error(err);
+   });
+
+//GAME CONSTANTS
+const BONUS = 10;
+const QUESTION_TIME = 10
+const MAX_QUESTIONS = 20;
+
+
 
 getNewQuestion = () => {
     //Go to end game page if all questions have been rendered
@@ -155,4 +141,4 @@ const countdownTime = () =>{
 }
 const startCountdown = () => setInterval(countdownTime,1000);
 
-startGame();
+
