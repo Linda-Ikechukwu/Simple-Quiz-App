@@ -6,7 +6,7 @@ As with my zeal to learn the foundations of the web, this ap is built with every
 
 To get a working copy of this app on your local machine run the following commands on your cmd;
 
--git clone https://github.com/Linda-Ikechukwu/Simple-Quiz-App
--npm install 
+*git clone https://github.com/Linda-Ikechukwu/Simple-Quiz-App
+*npm install 
 
 
