@@ -11,4 +11,4 @@ To get a working copy of this app on your local machine run the following comman
 * git clone https://github.com/Linda-Ikechukwu/Simple-Quiz-App
 * npm install 
 
-
+Access at bit.ly/TrivaQuiz
