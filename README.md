@@ -1,8 +1,9 @@
 # Trivia Quiz App
 
-This quiz app is a PWA with its questions gotten from the open trivia database
-
-As with my zeal to learn the foundations of the web, this ap is built with everything pure - no frameworks nor libraries.
+The Trivia Quiz App is a Progressive web app with its questions gotten from the Open Trivia DB Database
+It is built with just HTML, CSS and JavaScript. No frameworks, No Libraries.
+There are four categories and 20 questions for each round.
+See demo at 
 
 <img src="game.PNG" alt="screenshot 1">  <img src="game2.PNG" alt="screenshot 2">
 
