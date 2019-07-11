@@ -1,15 +1,16 @@
 
 /*Styles for the pregame page*/
 #instructions{
-    padding-top: 10rem;
+    padding-top: 8rem;
 }
 ul{
     list-style-type: disc;
     padding-left: 2.5rem;
+    margin-bottom: 3rem;
 }
 li{
     text-align: left;
-    font-size:2.8rem;
+    font-size:2.5rem;
     margin-bottom: 1rem;
 }
 li:hover{
@@ -17,17 +18,19 @@ li:hover{
 }
 .category{
     text-align:center;
-    border: 0.2rem solid white;
+    border: 0.2rem solid var(--border-color);
     margin-bottom: 1rem;
     border-radius: 1rem; 
     width: 16rem;
-    font-size:2.7rem;
+    font-size:2.5rem;
     padding:1rem;
+    background-color: var(--secondary-color);
+    
 }
 .category:hover{
     cursor:pointer;
     background-color:var(--default-color);
-    border: 0.3rem solid var(--border-color);
+    border: 0.2rem solid var(--border-color);
     box-shadow: 0 0.4rem 1.4rem 0 whitesmoke; 
     transform: translateY(-0.1rem);
     transition:transform 150ms;
@@ -36,21 +39,21 @@ li:hover{
     display:flex;
     flex-direction: row;
     justify-content:space-around;
-    padding-top:1.5rem;
+    padding-top:1.5rem;  
+    flex-wrap: wrap; 
 }
 .footer{
     text-align:center;
-    display:flex;
-    justify-content: last baseline;
-    flex-direction: column;
-    padding-top: calc((100vh - 450px) - 150px);
+    position: relative;
+    bottom: 2rem;
+    margin-top: 8rem;
 
 }
 .footer hr{
     color: white;
 }
 .footer p{
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     padding-top:1rem;
     font-style: oblique;
 }

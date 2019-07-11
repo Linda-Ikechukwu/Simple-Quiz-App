@@ -1,6 +1,11 @@
 html{
    --progress-color:#bd8270;
 }
+p#question{
+    font-size:2.7rem;
+    margin-bottom:1.8rem;
+    font-weight: 600;
+}
 .choice-container{
     display:flex;
     margin-bottom: 0.5rem;
@@ -19,6 +24,8 @@ html{
     padding: 1.5rem 2.5rem;
     background-color:var(--progress-color);
     color: white;
+    transition-delay: 1.5s;
+    transition-property: background-color;
 }
 .choice-text{
     padding: 1.5rem;

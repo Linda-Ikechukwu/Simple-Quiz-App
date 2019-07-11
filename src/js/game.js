@@ -32,24 +32,19 @@ const chosenCategory = localStorage.getItem('chosenCategory');
 
 fetch(`./questions/${chosenCategory}.json`)
    .then( response => {
-       console.log(response);
-       console.log(chosenCategory);
-       return response.json();
+        return response.json();
     })
    .then(loadedQuestions => {
-       console.log(loadedQuestions);
-       questions = loadedQuestions;
-       console.log(questions);
-       
-       startGame();
+      questions = loadedQuestions;
+      startGame();
    })
    .catch(err => {
        console.error(err);
-   });
+});
 
 //GAME CONSTANTS
 const BONUS = 10;
-const QUESTION_TIME = 10
+const QUESTION_TIME = 20
 const MAX_QUESTIONS = 20;
 
 
@@ -80,11 +75,8 @@ getNewQuestion = () => {
     availableQuestions.splice(questionIndex, 1)
 
     acceptingAnswers = true;
-    
-    //timer countdown
-    timerCounter = 0;
 
-   
+    
 }
 
 //when a question choice is clicked,
@@ -94,37 +86,48 @@ choices.forEach(choice => {
             return;
         }
         
+        timer.style.width = 0;
+
         acceptingAnswers = false;
         let selectedAnswerClass;
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset["choicenumber"];
         const answer = currentQuestion.answer;
         const correctAnswer = document.querySelector("p[data-choicenumber='"+answer+"']");
+
+        
         
         //Check if selected answer is wrong or right and apply corresponding class style
         if(selectedAnswer == currentQuestion.answer){
+            
+            
             selectedAnswerClass = 'correct';
             selectedChoice.parentElement.classList.add(selectedAnswerClass);
             incrementScore(BONUS);
-            clearInterval(startCountdown);
             
         }else{
+            
+            
             selectedAnswerClass = 'incorrect'
             selectedChoice.parentElement.classList.add(selectedAnswerClass);
-            clearInterval(startCountdown);
             setTimeout(() => {
                 correctAnswer.classList.add('correct');
-            },900);
+            },1500);
             
         }
+        
         //Remove applied answer classes after some time and load new question
         setTimeout (() => {
             selectedChoice.parentElement.classList.remove(selectedAnswerClass);
             correctAnswer.classList.remove('correct');
-            getNewQuestion();
-        
-        },2000)
+            
+            //reset timer counter
+            timerCounter = 0
 
+            getNewQuestion();
+            
+        },3000 )
+        
         
     })
 })
@@ -136,14 +139,13 @@ const incrementScore = (num) =>{
 
 //Timer function
 const countdownTime = () =>{
-  if(timerCounter <= QUESTION_TIME) {
+  if(acceptingAnswers === true && timerCounter <= QUESTION_TIME) {
       timerCountdown.innerText = timerCounter;
-      timer.style.width = `${timerCounter * 10}%`;
+      timer.style.width = `${timerCounter * 5}%`;
       timerCounter++;
-    }else{
-       getNewQuestion();
-    } 
+  }else {
+    getNewQuestion();
+  }
 }
 const startCountdown = () => setInterval(countdownTime,1000);
-
 
