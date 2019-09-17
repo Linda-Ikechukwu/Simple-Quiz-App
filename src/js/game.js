@@ -6,18 +6,23 @@ const progressBarFull = document.getElementById('progress-bar-full');
 const timer = document.getElementById('timer');
 const loader = document.getElementById('loader');
 const game = document.getElementById('game');
-
 const timerCountdown = document.querySelector('.timer-countdown');
 
 let availableQuestions = [];
 let currentQuestion = {}; 
 let acceptingAnswers = false;
 let score = 0;
-let timerCounter = 0;
-
-
+let timerCounter;
 let questions = [];
 
+//GAME CONSTANTS
+const BONUS = 10;
+const QUESTION_TIME = 20;
+const MAX_QUESTIONS = 20;
+
+const chosenCategory = localStorage.getItem('chosenCategory');
+
+//Function that starts up the game after questions have been fetched..
 startGame = () => {
     questionCounter = 0;
     score = 0;
@@ -25,11 +30,11 @@ startGame = () => {
     getNewQuestion();
     game.classList.remove('hidden');
     loader.classList.add('hidden');
-    startCountdown();
+
+    
 }
 
-const chosenCategory = localStorage.getItem('chosenCategory');
-
+//asynchronous function to fetch questions from the json array of the selected category.
 fetch(`./questions/${chosenCategory}.json`)
    .then( response => {
         return response.json();
@@ -42,13 +47,7 @@ fetch(`./questions/${chosenCategory}.json`)
        console.error(err);
 });
 
-//GAME CONSTANTS
-const BONUS = 10;
-const QUESTION_TIME = 20
-const MAX_QUESTIONS = 20;
-
-
-
+//Function that fetches a question at a random index from the array of the chosen json file/category
 getNewQuestion = () => {
     //Go to end game page if all questions have been rendered
     if(availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS){
@@ -75,7 +74,6 @@ getNewQuestion = () => {
     availableQuestions.splice(questionIndex, 1)
 
     acceptingAnswers = true;
-
     
 }
 
@@ -86,66 +84,61 @@ choices.forEach(choice => {
             return;
         }
         
-        timer.style.width = 0;
+        //timer.style.width = 0;
 
         acceptingAnswers = false;
-        let selectedAnswerClass;
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset["choicenumber"];
         const answer = currentQuestion.answer;
         const correctAnswer = document.querySelector("p[data-choicenumber='"+answer+"']");
-
+        const classToapply = selectedAnswer === answer ? 'correct':'incorrect';
         
-        
-        //Check if selected answer is wrong or right and apply corresponding class style
-        if(selectedAnswer == currentQuestion.answer){
-            
-            
-            selectedAnswerClass = 'correct';
-            selectedChoice.parentElement.classList.add(selectedAnswerClass);
-            incrementScore(BONUS);
-            
-        }else{
-            
-            
-            selectedAnswerClass = 'incorrect'
-            selectedChoice.parentElement.classList.add(selectedAnswerClass);
-            setTimeout(() => {
+        //Check if answer is correct and increment scores, then make the selected choice green.
+        if(classToapply === 'incorrect'){
+            selectedChoice.classList.add('incorrect');
+            setTimeout (() => {
                 correctAnswer.classList.add('correct');
-            },1500);
-            
+            }, 1000);
+        }else {
+            //Check if selected answer is wrong or right and apply corresponding class style
+            correctAnswer.classList.add('correct'); 
+            incrementScore(BONUS);
         }
+
         
-        //Remove applied answer classes after some time and load new question
+        
+       //Remove applied answer classes after and load new question after 2 seconds
         setTimeout (() => {
-            selectedChoice.parentElement.classList.remove(selectedAnswerClass);
+            selectedChoice.classList.remove('incorrect');
             correctAnswer.classList.remove('correct');
-            
-            //reset timer counter
-            timerCounter = 0
-
             getNewQuestion();
-            
-        },3000 )
-        
-        
-    })
-})
+        },3000);
 
+        
+    });
+});
+
+//Function to increment score by the stated bonus constant once a question is answered correctly.
 const incrementScore = (num) =>{
     score += num;
     scoreText.innerText = score;
 }
 
 //Timer function
-const countdownTime = () =>{
-  if(acceptingAnswers === true && timerCounter <= QUESTION_TIME) {
+/*const countdownTime = () =>{
       timerCountdown.innerText = timerCounter;
       timer.style.width = `${timerCounter * 5}%`;
       timerCounter++;
-  }else {
-    getNewQuestion();
-  }
+  
 }
+
 const startCountdown = () => setInterval(countdownTime,1000);
+
+if(timerCounter <= QUESTION_TIME){
+    startCountdown();
+}else{
+    timerCounter = 0;
+    getNewQuestion();
+}*/
+
 

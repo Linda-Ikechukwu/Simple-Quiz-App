@@ -1,6 +1,6 @@
 //script for caching files using the service worker 
 
-let staticFilesCache = 'v3'; 
+let staticFilesCache = 'v6'; 
 
 //caching the appilication shell
 
