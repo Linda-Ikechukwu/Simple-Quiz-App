@@ -30,6 +30,7 @@ const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
 username.addEventListener('keyup', () => {
     saveHighScoreBtn.disabled = !username.value;
 });
+
 const saveHighScore = e => {
     e.preventDefault();
 

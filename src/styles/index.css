@@ -21,7 +21,7 @@ h1 > span{
     font-weight:500;
 }
 h2{
-    font-size:4.2rem;
+    font-size:4rem;
     margin-bottom:1.5rem;
     font-weight:700;
 }
@@ -30,6 +30,10 @@ h3{
     font-weight:800;
     margin-bottom:1.8rem;
 
+}
+
+#score-smiley{
+    text-align: center;
 }
 
 
@@ -101,6 +105,8 @@ body{
     transform:none;
     background-color:var(--secondary-color);
 }
+
+/*Forms*/
 form{
     width:100%;
     display: flex;
@@ -122,6 +128,8 @@ input{
 input:focus{
     outline:0.2rem solid var(--border-color);
 }
+
+/*Lists*/
 ul{
     list-style-type:none;
     padding-left:0;

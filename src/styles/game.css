@@ -2,7 +2,7 @@ html{
    --progress-color:#bd8270;
 }
 p#question{
-    font-size:2.7rem;
+    font-size:2.4rem;
     margin-bottom:1.8rem;
     font-weight: 600;
 }
@@ -21,14 +21,14 @@ p#question{
     transition:transform 150ms;
 }
 .choice-option{
-    padding: 1.5rem 2.5rem;
+    padding: 1rem 2.5rem;
     background-color:var(--progress-color);
     color: white;
     transition-delay: 1.5s;
     transition-property: background-color;
 }
 .choice-text{
-    padding: 1.5rem;
+    padding: 1rem;
     width:100%;
     color:rgb(20, 20, 20);
     transition: background-color .5s;
@@ -44,12 +44,12 @@ p#question{
 #hud{
     display:flex;
     justify-content: space-between;
-    margin-top:2rem;
+    margin-top:1rem;
     width:100%;
 }
 .hud-prefix{
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
 }
 .hud-main-text{
     text-align:center;
@@ -57,14 +57,14 @@ p#question{
 /*Progress Bar*/
 #progress-bar{
     width: 20rem;
-    height: 3.5rem;
+    height: 3rem;
     border: 0.2rem solid var(--progress-color);
     background-color: white;
     margin-top: 0.5rem;
     border-radius: 5rem;
 }
 #progress-bar-full{
-    height: 3.1rem;
+    height: 2.6rem;
     background-color: var(--progress-color);
     width: 0%;
     border-radius: 5rem;
@@ -111,6 +111,23 @@ p#question{
 .circle:nth-child(3){
     animation-delay:1.75s;
     background-color: #dba58d;
+}
+
+.next-button{
+    text-align: center;
+    margin-top: 1.3rem;
+    font-size: 2.2rem;
+}
+
+.next-button span{
+   background-color:var(--progress-color); 
+   padding: 1rem;
+   border-radius: 1rem;
+   display: none;
+}
+
+.next-button span:hover{
+    cursor: pointer;
 }
 
 @keyframes rotate{
